@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -23,7 +24,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('task.create');
+        $projects = Project::all();
+        return view('task.create', compact('projects'));
     }
 
     /**
@@ -32,7 +34,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         Task::create($request->except('_token', '_method'));
-        return redirect()->route('tasks.index')->with('message', 'Task created !');
+        return redirect()->route('management.index')->with('message', 'Task created !');
     }
 
     /**
@@ -63,7 +65,7 @@ class TaskController extends Controller
         }
     
         $task->save();
-        return redirect()->route('tasks.index')->with('message', 'Task updated!');
+        return redirect()->route('management.index')->with('message', 'Task updated!');
     }
     
 
@@ -73,6 +75,6 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect()->route('tasks.index')->with('message', 'Task deleted !');
+        return redirect()->route('management.index')->with('message', 'Task deleted !');
     }
 }

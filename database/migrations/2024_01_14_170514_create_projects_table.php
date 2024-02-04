@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name');
             $table->text('description');
-            $table->boolean('state');
-            $table->dateTime('deadline');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('project_id');
-            $table->timestamps();
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
+            $table->timestamps(); 
         });
     }
 
@@ -27,7 +25,7 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {    
-        Schema::dropIfExists('tasks');
+    {
+        Schema::dropIfExists('projects');
     }
 };

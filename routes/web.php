@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,8 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/management');
+
 Route::resource('tasks', TaskController::class);
+Route::resource('projects', ProjectController::class);
+Route::get('/management', [ManagementController::class, 'index'])->name('management.index');

@@ -1,7 +1,6 @@
-<div>
-    <a href="{{ route('tasks.create') }}" class="btn btn-primary" role="button">New Task</a>
-</div>
-
+<!--
+    This page is for maintenance only, it display all tasks
+-->
 <div>
     <section class="main">
         @if ($tasks->isEmpty())

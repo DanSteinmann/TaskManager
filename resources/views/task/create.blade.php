@@ -32,8 +32,13 @@
         </div>
 
         <div>
-            <label for="project_id">Project ID:</label>
-            <input type="number" id="project_id" name="project_id">
+            <label for="project_id">Project:</label>
+            <select id="project_id" name="project_id">
+                <option value="">Select a project</option>
+                @foreach($projects as $project)
+                    <option value="{{ $project->id }}">{{ $project->name }}</option>
+                @endforeach
+            </select>
         </div>
 
         <input type="submit" value="Add Task">

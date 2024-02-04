@@ -1,10 +1,11 @@
 <html>
     <head>
         <title>Task</title>
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     </head>
     <body>
-        <section>
-            {{ $slot }}
-        </section>
+        <div class="container">
+            @yield('content')
+        </div>
     </body>
 </html>
