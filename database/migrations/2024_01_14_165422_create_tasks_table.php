@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->boolean('state');
-            $table->dateTime('deadline');
+            $table->date('deadline');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('project_id');
             $table->timestamps();

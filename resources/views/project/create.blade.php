@@ -1,4 +1,5 @@
-<x-layout>
+@extends('components.layout')
+@section('content')
     <h1>New Project</h1>
     <form method="POST" action="{{ route('projects.store') }}">
         @csrf
@@ -15,14 +16,14 @@
 
         <div>
             <label for="start_date">Start date:</label>
-            <input type="datetime-local" id="start_date" name="start_date" required>
+            <input type="date" id="start_date" name="start_date" required>
         </div>
 
         <div>
             <label for="end_date">End date:</label>
-            <input type="datetime-local" id="end_date" name="end_date" required>
+            <input type="date" id="end_date" name="end_date" required>
         </div>
 
         <input type="submit" value="Create project">
     </form>
-</x-layout>
+@endsection

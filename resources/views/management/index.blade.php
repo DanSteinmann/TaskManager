@@ -1,8 +1,12 @@
 @extends('components.layout')
 @section('content')
-<div>
-    <a href="{{ route('tasks.create') }}" class="btn btn-primary" role="button">New Task</a>
-    <a href="{{ route('projects.create') }}" class="btn btn-primary" role="button">New Project</a>
+<div class="button-group">
+    <form action="{{ route('tasks.create') }}" method="GET">
+        <button type="submit" class="btn btn-primary">New Task</button>
+    </form>
+    <form action="{{ route('projects.create') }}" method="GET">
+        <button type="submit" class="btn btn-primary">New Project</button>
+    </form>
 </div>
 
 <div>
@@ -60,6 +64,11 @@
                                         @method('PATCH')
                                         <input type="hidden" name="change_state" value="1">
                                         <button type="submit" class="btn btn-{{ $task->state ? 'success' : 'secondary' }}">{{ $task->state ? 'Complete' : 'Incomplete' }}</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="{{ route('tasks.edit', $task->id) }}" method="GET">
+                                        <button type="submit" class="btn btn-primary">Edit</button>
                                     </form>
                                 </td>
                             </tr>

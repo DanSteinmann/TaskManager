@@ -41,8 +41,11 @@ h1 {
 }
 
 .button-group {
-    margin-top: 10px;
+    display: flex;
+    justify-content: start;
+    gap: 10px;
 }
+
 
 .btn {
     padding: 6px 12px;
