@@ -18,11 +18,16 @@
                 <div class="projectTitle">
                     <label>{{ $project->name }}</label>
                 </div>
-                <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+                <div class="button-group">
+                    <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <form action="{{ route('projects.edit', $project->id) }}" method="GET">
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
+                </div>
                 <p>{{ $project->description }}</p>
                 @if ($project->tasks->isEmpty())
                     <p>No tasks available</p>

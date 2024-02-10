@@ -46,7 +46,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('project.create', compact('project'));
     }
 
     /**
@@ -54,7 +54,8 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->update($request->all());
+        return redirect()->route('management.index')->with('message', 'Project updated!');
     }
 
     /**
