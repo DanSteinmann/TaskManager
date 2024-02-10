@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Project;
+use App\Models\User;
 
 class ProjectTest extends TestCase
 {
@@ -14,6 +15,9 @@ class ProjectTest extends TestCase
     
     public function test_a_project_can_be_created()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
         $projectData = [
             'name' => 'New Project',
             'description' => 'Task description here',
@@ -34,6 +38,8 @@ class ProjectTest extends TestCase
 
     public function test_a_project_can_be_deleted()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
         $project = Project::create([
             'name' => 'New Project',
@@ -54,6 +60,9 @@ class ProjectTest extends TestCase
 
     public function test_a_project_can_be_updated()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+        
         $project = Project::create([
             'name' => 'Project Name',
             'description' => 'Task description here',

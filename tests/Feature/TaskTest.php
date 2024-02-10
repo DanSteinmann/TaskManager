@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\Task;
+use App\Models\User;
 
 class TaskTest extends TestCase
 {
@@ -22,6 +23,9 @@ class TaskTest extends TestCase
     
     public function test_a_task_can_be_created()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
         $project = $this->createProject();
     
         $taskData = [
@@ -45,6 +49,9 @@ class TaskTest extends TestCase
 
     public function test_a_task_can_be_completed()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
         $project = $this->createProject();
 
         $task = Task::create([
@@ -68,6 +75,9 @@ class TaskTest extends TestCase
 
     public function test_a_task_can_be_deleted()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+        
         $project = $this->createProject();
 
         $task = Task::create([
