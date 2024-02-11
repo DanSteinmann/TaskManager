@@ -1,66 +1,146 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Task Manager
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Rendu du projet](/resources/img/Main.png "TaskManager")
 
-## About Laravel
+## Introduction
+Ce projet est une application web conçue pour faciliter la gestion de projets et de tâches associées, offrant aux utilisateurs une plateforme intuitive pour organiser efficacement leur travail. Développé avec Laravel et intégrant Laravel Breeze pour l'authentification, l'application permet de créer, d'éditer, d'assigner et de suivre l'avancement des tâches au sein de différents projets.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Dépendances
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Ce projet est construit avec [Laravel](https://laravel.com/), un framework PHP pour le développement web. Outre Laravel, ce projet utilise plusieurs autres dépendances pour fonctionner correctement :
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **[Laravel Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze)** : Laravel Breeze fournit une implémentation simple pour l'authentification, incluant le login, l'enregistrement et la modification des mots de passe.
 
-## Learning Laravel
+- **[Tailwind CSS](https://tailwindcss.com/)** : Un framework CSS utility-first pour un design rapide et réactif.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **[MySQL](https://www.mysql.com/)** : Système de gestion de base de données relationnelle utilisé pour stocker toutes les données de l'application. Bien que Laravel supporte plusieurs systèmes de base de données, ce projet est configuré pour utiliser MySQL.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **[Composer](https://getcomposer.org/)** : Gestionnaire de dépendances pour PHP, utilisé pour installer et gérer les bibliothèques sur lesquelles le projet s'appuie.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **[Node.js et npm](https://nodejs.org/)** (optionnel) : Utilisés pour compiler les ressources frontend si vous modifiez le JavaScript ou le CSS Tailwind personnalisé. Laravel Mix, qui repose sur Webpack, est utilisé pour compiler les assets.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Installation
+Pour installer et exécuter ce projet, suivez les étapes ci-dessous :
 
-### Premium Partners
+0. **Prérequis**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    - Installer docker
 
-## Contributing
+1. **Cloner le dépôt**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Tout d'abord, clonez le dépôt sur votre machine locale en utilisant la commande suivante :  
 
-## Code of Conduct
+   ```
+   git clone https://github.com/DanSteinmann/TaskManager.git
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+2. **Installer les dépendances**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Ensuite, naviguez dans le répertoire du projet cloné et lancer le projet :  
 
-## License
+    ```
+    cd votre-repo
+    ./vendor/bin/sail up
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Dans un second terminal, lancer VITE  
+
+    ```
+    cd votre-repo
+    ./vendor/bin/sail npm run dev
+    ```
+
+3. **Configurer l'environnement (facultatif)**
+
+Copiez le fichier `.env.example` en un nouveau fichier nommé `.env` et configurez vos variables d'environnement (base de données, mail, etc.) :
+
+4. **Migrer la base de données**
+
+Puis, exécutez les migrations :
+    ```
+    ./vendor/bin/sail artisan migrate
+    ```
+
+## Mise en route
+
+Après l'installation, vous pouvez démarrer le serveur de développement local pour accéder à l'application :  
+Si vous n'avez pas modifier le fichier de configuration, il se trouve ici [https://localhost/](https://localhost/).  
+
+
+![Welcome page](/resources/img/WelcomePage.png "Welcome")
+
+### Création de compte et login
+1. Créer un Compte: Register  
+Visitez la page d'inscription pour créer un nouveau compte utilisateur  
+Vous devrez renseigner:  
+    - votre nom (il sera visible par les autres utilisateurs)
+    - Votre e-mail
+    - Un mot de passe de minimum 6 caractères
+
+![Register page](/resources/img/Register.png "Register")
+
+2. Se connecter (si déjà enregistrer)
+Si votre compte a déjà été créer, vous pourrez vous connecter via le login
+3. Modifier user
+Dans le coin supérieur droit, en cliquant sur votre nom, vous pourrez modifier votre profile.
+Vous avez le posibilité de changer:
+    - votre nom
+    - votre e-mail
+    - votre mot de passe
+Vous avez également la possibilité de supprimer votre compte utilisateur.
+
+### Création de votre premier projet
+Dans l'onglet Management, vous avez une vue d'ensemble des vos projets et tâches à effectuer.
+Pour créer votre premier projet, cliquer sur le bouton `Create a new project` ou cliquer sur l'onglet `Create Project`
+Vous devrez remplir les 4 attributs qui sont:
+    - name (nom du projet)
+    - Description (description du projet)
+    - Start date (date de début du projet)
+    - End date (date de fin du projet)
+
+Cliquer sur Create pour créer le projet.  
+
+![New Project](/resources/img/NewProject.png "New Project")
+
+Vous serez rediriger vers la page Management.  
+Vous avez la possibilité d'éditer ou de supprimer le projet.  
+
+![New Project Home](/resources/img/NewProjectHome.png "New Project home")
+
+### Création de tâches
+Dans l'onglet Management, vous avez une vue d'ensemble des vos projets et tâches à effectuer.  
+Pour créer votre première tâche, cliquer sur le bouton `Create a new task` sous le projet ou cliquer sur l'onglet `Create Task`  
+Vous devrez remplir les 6 attributs qui sont:  
+- Title (titre de la tâche)
+- Description (description de la tâche)
+- State (état de la tâche, pending ou completed)
+- Deadline (date de fin de la tâche)
+- User (utilisateur chargé de la réalisation, nobody permet de laisser l'attribut vide)
+- Project (nom du projet parmis les projets existant)
+
+Cliquer sur Create pour créer la tâche.  
+Vous serez rediriger vers la page Management.  
+
+![New Task](/resources/img/NewTask.png "New Task")
+
+Vous avez 3 actions que vous pouvez effectuer avec les tâches:  
+- Editer
+- Inverser son état (pending - completed - pending)
+- Supprimer
+
+![New Task Home](/resources/img/NewTaskHome.png "New Task home")
+
+### Remarques d'ordre général, limitations et sécurité
+
+Tout utilisateur connecté pour créer / modifier / supprimer du contenu, il n'y a pas de propriété.  
+Les tâches peuvent êtres suppriées en tout temps, il n'y a pas de limitation.  
+Les projets ne peuvent être supprimés que s'ils n'ont plus de tâches actives (pending).  
+Si vous supprimer votre compte utilisateur, vos tâches ne seront pas supprimées mais vous ne serez plus attribué à cette tâche.  
+
+### Améliorations
+
+- Augmenter la sécurité en demandant une confirmation pour la suppression d'éléments, car cette action est iréversible.  
+- Indiquer qu'un projet est en retard  
+- Indiquer qu'un tâche est hors délais d'un projet  
