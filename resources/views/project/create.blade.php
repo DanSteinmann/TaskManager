@@ -1,4 +1,13 @@
 <x-app-layout>
+    @if ($errors->any())
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border-4 border-grey-500/50 rounded-lg">
@@ -20,12 +29,12 @@
 
                         <div class="flex items-center py-2">
                             <label for="name" class="block w-40 text-xl md:text-2xl font-bold">Name:</label>
-                            <input type="text" id="name" name="name" value="{{ $project->name ?? '' }}" required>
+                            <input type="text" id="name" name="name" value="{{ old('name', $project->name ?? '') }}" required>
                         </div>
 
                         <div class="flex items-center py-2">
                             <label for="description" class="block w-40 text-xl md:text-2xl font-bold">Description:</label>
-                            <textarea id="description" name="description" required>{{ $project->description ?? '' }}</textarea>
+                            <textarea id="description" name="description" required>{{ old('name', $project->description ?? '') }}</textarea>
                         </div>
 
                         <div class="flex items-center py-2">

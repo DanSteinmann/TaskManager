@@ -54,36 +54,36 @@
                                 <table class="min-w-full divide-y divide-gray-200 mt-2">
                                     <thead>
                                         <tr>
-                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase w-1/6">
                                                 Title
                                             </th>
-                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase w-1/4">
                                                 Description
                                             </th>
-                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase w-1/6">
                                                 Deadline
                                             </th>
-                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase w-1/6">
                                                 User
                                             </th>
-                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase w-1/4">
                                                 Actions
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody class="bg-white divide-y divide-gray-200">
+                                    <tbody class="divide-y divide-gray-200">
                                         @foreach ($project->tasks as $task)
-                                            <tr>
-                                                <td class="px-6 py-4 whitespace-nowrap">
+                                            <tr class="bg-{{ $task->state ? 'grey-600' : 'white' }}">
+                                                <td class="px-4 py-4 break-words">
                                                     {{ $task->title }}
                                                 </td>
-                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                <td class="px-4 py-4 break-words">
                                                     {{ $task->description }}
                                                 </td>
-                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                <td class="px-4 py-4 whitespace-nowrap">
                                                     {{ $task->deadline }}
                                                 </td>
-                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                <td class="px-4 py-4 whitespace-nowrap">
                                                     {{ $task->user ? $task->user->name : 'No user assigned' }}
                                                 </td>
                                                 <td>
@@ -97,7 +97,7 @@
                                                             @csrf
                                                             @method('PATCH')
                                                             <input type="hidden" name="change_state" value="1">
-                                                            <button type="submit" class="px-4 py-2 bg-{{ $task->state ? 'green-500' : 'gray-500' }} text-white text-sm rounded hover:bg-{{ $task->state ? 'green-700' : 'gray-700' }}">{{ $task->state ? 'Complete' : 'Incomplete' }}</button>
+                                                            <button type="submit" class="px-4 py-2 bg-{{ $task->state ? 'blue-500' : 'green-500' }} text-white text-sm rounded hover:bg-{{ $task->state ? 'blue-700' : 'green-700' }}">{{ $task->state ? 'Redo' : 'Done' }}</button>
                                                         </form>
                                                         <form action="{{ route('tasks.edit', $task->id) }}" method="GET" class="inline">
                                                             <button type="submit" class="px-4 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-700">Edit</button>

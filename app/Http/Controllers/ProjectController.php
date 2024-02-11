@@ -29,6 +29,13 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate(
+            [
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
+            ]
+        );
+
         Project::create($request->except('_token', '_method'));
         return redirect()->route('management.index')->with('message', 'Project created !');
     }
@@ -54,6 +61,13 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $validatedData = $request->validate(
+            [
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
+            ]
+        );
+        
         $project->update($request->all());
         return redirect()->route('management.index')->with('message', 'Project updated!');
     }
@@ -63,6 +77,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->tasks()->where('state', '=', false)->count() > 0) {
+            return redirect()->route('management.index')->with('error', 'Cannot delete a project with active tasks.');
+        }
+
         $project->delete();
         return redirect()->route('management.index')->with('message', 'Project deleted !');
     }

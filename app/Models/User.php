@@ -42,4 +42,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            $user->tasks()->update(['user_id' => null]);
+        });
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+
 }
