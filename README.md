@@ -34,34 +34,28 @@ Tout d'abord, clonez le dépôt sur votre machine locale en utilisant la command
    ```
    git clone https://github.com/DanSteinmann/TaskManager.git
    ```
+2. **Configurer l'environnement**
 
+    Copiez le fichier `.env.example` en un nouveau fichier nommé `.env` et configurez vos variables d'environnement (base de données, mail, etc.) selon besoin :
 
-2. **Installer les dépendances**
+3. **Installer les dépendances**
 
-Ensuite, naviguez dans le répertoire du projet cloné et lancer le projet :  
+Ensuite, naviguez dans le répertoire du projet cloné et l'installation des dépendances :  
 
-    ```
-    cd votre-repo
+    
+    cd TaskManager
+    docker run --rm --interactive --tty   --volume $PWD:/app   --user $(id -u):$(id -g)   composer install
     ./vendor/bin/sail up
-    ```
+    
 
-Dans un second terminal, lancer VITE  
-
-    ```
-    cd votre-repo
+Dans un second terminal, générez la clé, installet et démarrer VITE  
+    
+    
+    cd TaskManager
+    ./vendor/bin/sail artisan key:generate
+    ./vendor/bin/sail npm install
     ./vendor/bin/sail npm run dev
-    ```
-
-3. **Configurer l'environnement (facultatif)**
-
-Copiez le fichier `.env.example` en un nouveau fichier nommé `.env` et configurez vos variables d'environnement (base de données, mail, etc.) :
-
-4. **Migrer la base de données**
-
-Puis, exécutez les migrations :
-    ```
-    ./vendor/bin/sail artisan migrate
-    ```
+        
 
 ## Mise en route
 
